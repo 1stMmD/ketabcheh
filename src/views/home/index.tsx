@@ -1,3 +1,4 @@
+import Group from "../../components/group/group"
 import SearchInput from "../../components/search-input/search-input"
 import { Profile } from "../../svg/icons"
 import { KetabchehLogo } from "../../svg/ketabcheh-logo"
@@ -62,6 +63,36 @@ function Home() {
         </div>
 
         <SearchInput/>
+
+        <div
+        className="
+        mt-4
+        ">
+            <img
+            src="banner.png"
+            className="
+            w-full
+            aspect-[4/2]
+            "
+            />
+        </div>
+
+        <div
+        className="
+        flex
+        flex-col
+        mt-[36px]
+        ">
+
+            <Group
+            title="جدیدترین کتاب های کمیاب"
+            url=""
+            >
+                <></>
+            </Group>
+
+        </div>
+
     </div>
   )
 }

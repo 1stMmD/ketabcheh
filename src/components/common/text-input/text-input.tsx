@@ -44,6 +44,7 @@ function TextInput({
         flex-shrink
         ">
             <input
+            autoComplete="off"
             name={name}
             dir="rtl"
             placeholder=" "
