@@ -1,3 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@font-face {
+    font-family: Kalameh;
+    src: url("../public/KALAMEH\ BLACK.TTF");
+}
+
+@font-face {
+    font-family: IRANSans;
+    src: url("../public/IRANSans\ UltraLight.ttf");
+    font-weight: 200;
+}
+@font-face {
+    font-family: IRANSans;
+    src: url("../public/IRANSans\ Regular.ttf");
+    font-weight: 400;
+}
+@font-face {
+    font-family: IRANSans;
+    src: url("../public/IRANSans\ Medium.ttf");
+    font-weight: 500;
+}
