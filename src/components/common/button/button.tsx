@@ -7,11 +7,13 @@ const Button = ({
   return (
     <button
     className="
+    w-full
     text-[16px]
     text-white
     bg-primary
-    py-3.5
+    py-3
     rounded-[8px]
+    font-light
     ">
         {children}
     </button>

@@ -1,6 +1,7 @@
 import Button from "../../components/common/button/button"
 import ProviderButton from "../../components/common/provider-button/provider-button"
 import { Google } from "../../svg/providers"
+import { Link } from "react-router-dom"
 
 function Boarding() {
   return (
@@ -63,9 +64,12 @@ function Boarding() {
             gap-5
             ">
 
-                <Button>
-                    ثبت نام
-                </Button>
+                <Link
+                to="/sign-up">
+                    <Button>
+                        ثبت نام
+                    </Button>
+                </Link>
 
                 <Button>
                     ورود

@@ -5,6 +5,7 @@ import {
 } from "react-router-dom"
 import Loading from "./views/loading"
 import Boarding from "./views/boarding"
+import Signup from "./views/signup"
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Boarding/>}/>
+          <Route path="/sign-up" element={<Signup/>}/>
         </Routes>
         
       </main>
