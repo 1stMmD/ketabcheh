@@ -7,6 +7,7 @@ const Button = ({
   return (
     <button
     className="
+    w-full
     text-[16px]
     text-white
     bg-primary
