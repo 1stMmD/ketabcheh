@@ -1,11 +1,13 @@
 type props = {
     Icon : React.FC<{className : string}>,
-    label : string
+    label : string,
+    name : string
 }
 
 function TextInput({
     Icon,
-    label
+    label,
+    name
 } : props) {
   return (
     <div
@@ -19,9 +21,11 @@ function TextInput({
     outline
     outline-[1px]
     outline-[#8E8E93]
-    stroke-neutral-800
+    stroke-[#292D32]
+    fill-[#292D32]
     focus-within:outline-primary
     focus-within:stroke-primary
+    focus-within:fill-primary
     focus-within:shadow-[0px_0px_0px_2px]
     focus-within:shadow-primary/30
     gap-2
@@ -40,6 +44,7 @@ function TextInput({
         flex-shrink
         ">
             <input
+            name={name}
             dir="rtl"
             placeholder=" "
             className="

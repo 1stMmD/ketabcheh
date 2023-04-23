@@ -1,6 +1,6 @@
 import Button from "../../components/common/button/button"
 import TextInput from "../../components/common/text-input/text-input"
-import { User } from "../../svg/icons"
+import { Email, Password, Phone, User } from "../../svg/icons"
 import { KetabchehLogo } from "../../svg/ketabcheh-logo"
 
 function Signup() {
@@ -60,7 +60,7 @@ function Signup() {
         rounded-tl-[20px]
         rounded-tr-[20px]
         shadow-[0px_-28px_82px_0]
-        shadow-black/10
+        shadow-black/5
         px-3
         pb-5
         ">
@@ -83,20 +83,24 @@ function Signup() {
             ">
             
                 <TextInput
+                name="name"
                 Icon={User}
                 label="نام و نام خانوادگی"
                 />
                 <TextInput
-                Icon={User}
-                label="نام و نام خانوادگی"
+                name="email"
+                Icon={Email}
+                label="ایمیل"
                 />
                 <TextInput
-                Icon={User}
-                label="نام و نام خانوادگی"
+                name="phone"
+                Icon={Phone}
+                label="شماره تلفن"
                 />
                 <TextInput
-                Icon={User}
-                label="نام و نام خانوادگی"
+                name="password"
+                Icon={Password}
+                label="رمز عبور"
                 />
 
                 <div
