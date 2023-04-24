@@ -15,7 +15,7 @@ function TextInput({
     px-4
     py-1
     flex
-    flex-row-reverse
+    flex-row
     items-center
     rounded-[8px]
     outline
@@ -46,7 +46,6 @@ function TextInput({
             <input
             autoComplete="off"
             name={name}
-            dir="rtl"
             placeholder=" "
             className="
             placeholder-shown

@@ -12,6 +12,7 @@ function App() {
   return (
     <Router>
       <main
+      dir="rtl"
       className='
       '>
 

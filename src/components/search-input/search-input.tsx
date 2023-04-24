@@ -5,7 +5,7 @@ function SearchInput() {
     <div
     className="
     flex
-    flex-row-reverse
+    flex-row
     items-center
     rounded-[8px]
     px-4
@@ -27,7 +27,6 @@ function SearchInput() {
 
       <input
       placeholder="نام نویسنده ،‌ کتاب ،‌ انتشارات و..."
-      dir="rtl"
       className="
       text-[14px]
       w-full

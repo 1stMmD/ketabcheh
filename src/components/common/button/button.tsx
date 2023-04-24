@@ -1,12 +1,14 @@
 type props = {
-    children : React.ReactNode
+    children : React.ReactNode,
+    className? : string
 }
 const Button = ({
-    children
+    children,
+    className
 } : props) => {
   return (
     <button
-    className="
+    className={`
     w-full
     text-[16px]
     text-white
@@ -14,7 +16,8 @@ const Button = ({
     py-3
     rounded-[8px]
     font-light
-    ">
+    ${className ?? ""}
+    `}>
         {children}
     </button>
   )
