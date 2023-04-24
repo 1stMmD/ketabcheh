@@ -9,6 +9,7 @@ import Signup from "./views/signup"
 import Home from "./views/home"
 import NavbarMobile from "./layouts/navbar-mobile/navbar-mobile"
 import Library from "./views/library"
+import BookDetails from "./views/book-details"
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/search" element={<Home/>}/>
           <Route path="/library" element={<Library/>}/>
           <Route path="/cart" element={<Home/>}/>
+          <Route path="/book" element={<BookDetails/>}/>
         </Routes>
 
         <NavbarMobile/>
