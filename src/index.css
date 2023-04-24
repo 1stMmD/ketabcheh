@@ -7,7 +7,7 @@
 
 @font-face {
     font-family: Kalameh;
-    src: url("../public/KALAMEH\ BLACK.TTF");
+    src: url("../public/Kalameh\ Bold.ttf");
 }
 
 @font-face {
@@ -24,4 +24,8 @@
     font-family: IRANSans;
     src: url("../public/IRANSans\ Medium.ttf");
     font-weight: 500;
+}
+
+* {
+    -webkit-tap-highlight-color: transparent;
 }
