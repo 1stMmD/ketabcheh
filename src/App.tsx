@@ -8,6 +8,7 @@ import Boarding from "./views/boarding"
 import Signup from "./views/signup"
 import Home from "./views/home"
 import NavbarMobile from "./layouts/navbar-mobile/navbar-mobile"
+import Library from "./views/library"
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
           <Route path="/sign-up" element={<Signup/>}/>
           <Route path="/home" element={<Home/>}/>
           <Route path="/search" element={<Home/>}/>
-          <Route path="/library" element={<Home/>}/>
+          <Route path="/library" element={<Library/>}/>
           <Route path="/cart" element={<Home/>}/>
         </Routes>
 
