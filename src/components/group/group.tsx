@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { Arrow } from "../../svg/icons"
+import "swiper/css"
 
 type props = {
     children : React.ReactNode,

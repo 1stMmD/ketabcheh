@@ -1,5 +1,4 @@
 import { Swiper, SwiperSlide } from "swiper/react"
-import "swiper/css"
 import Group from "../../components/group/group"
 import SearchInput from "../../components/search-input/search-input"
 import { Profile } from "../../svg/icons"
