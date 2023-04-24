@@ -1,16 +1,16 @@
 import { PersianNumber } from "../../helpers/persian-number"
 
 type props = {
-    info ?: {
+    info : {
         name : string,
-        author : string,
+        author : string[],
         cover : string,
         price : number,
     }
 }
 
 function Book({
-    info
+    info : { name , author , cover , price }
 } : props) {
   return (
     <div
@@ -22,7 +22,7 @@ function Book({
     gap-1
     ">
         <img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs_TwSwXB5hUoZK_vgxLlPDttdxdUUxoK1Tg&usqp=CAU"
+        src={cover}
         className="
         rounded-[8px]
         w-full
@@ -37,8 +37,14 @@ function Book({
         flex-col
         gap-[2px]
         ">
-            <h5>
-                1984
+            <h5
+            className="
+            whitespace-nowrap
+            overflow-hidden
+            text-ellipsis
+            text-[14px]
+            ">
+                {name}
             </h5>
 
             <p
@@ -46,7 +52,7 @@ function Book({
             text-[14px]
             text-primary
             ">
-                {PersianNumber(140000)}
+                {PersianNumber(price)}
             </p>
 
             <p
@@ -54,7 +60,7 @@ function Book({
             text-[12px]
             "
             >
-                جورج اوریول
+                {author.join(",")}
             </p>
         </div>
     </div>

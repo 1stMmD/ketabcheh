@@ -3,11 +3,11 @@ import Group from "../../components/group/group"
 import SearchInput from "../../components/search-input/search-input"
 import { Profile } from "../../svg/icons"
 import { KetabchehLogo } from "../../svg/ketabcheh-logo"
-import Book from "../../components/book/book"
 import Category from "../../components/category/category"
 import { categories, publishers } from "../../constants"
 import Publisher from "../../components/publisher/publisher"
 import Button from "../../components/common/button/button"
+import BookWrapper from "../../components/book-wrapper/book-wrapper"
 
 function Home() {
   return (
@@ -98,26 +98,9 @@ function Home() {
             title="جدیدترین کتاب های کمیاب"
             url=""
             >
-                <Swiper
-                width={128}
-                spaceBetween={16}
-                >
-                    <SwiperSlide>
-                        <Book/>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <Book/>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <Book/>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <Book/>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <Book/>
-                    </SwiperSlide>
-                </Swiper>
+                <BookWrapper
+                api=""
+                />
             </Group>
 
             <Group
