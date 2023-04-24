@@ -25,7 +25,7 @@ function Book({
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs_TwSwXB5hUoZK_vgxLlPDttdxdUUxoK1Tg&usqp=CAU"
         className="
         rounded-[8px]
-        w-[128px]
+        w-full
         aspect-[64/101]
         bg-neutral-200
         "

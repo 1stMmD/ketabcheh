@@ -1,7 +1,10 @@
+import { Swiper, SwiperSlide } from "swiper/react"
+import "swiper/css"
 import Group from "../../components/group/group"
 import SearchInput from "../../components/search-input/search-input"
 import { Profile } from "../../svg/icons"
 import { KetabchehLogo } from "../../svg/ketabcheh-logo"
+import Book from "../../components/book/book"
 
 function Home() {
   return (
@@ -88,7 +91,20 @@ function Home() {
             title="جدیدترین کتاب های کمیاب"
             url=""
             >
-                <></>
+                <Swiper
+                slidesPerView={2}
+                spaceBetween={16}
+                >
+                    <SwiperSlide>
+                        <Book/>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <Book/>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <Book/>
+                    </SwiperSlide>
+                </Swiper>
             </Group>
 
         </div>
