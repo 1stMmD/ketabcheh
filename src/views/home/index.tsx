@@ -4,6 +4,8 @@ import SearchInput from "../../components/search-input/search-input"
 import { Profile } from "../../svg/icons"
 import { KetabchehLogo } from "../../svg/ketabcheh-logo"
 import Book from "../../components/book/book"
+import Category from "../../components/category/category"
+import { categories } from "../../constants/categories"
 
 function Home() {
   return (
@@ -84,6 +86,8 @@ function Home() {
         flex
         flex-col
         mt-[36px]
+        pb-[36px]
+        gap-[36px]
         ">
 
             <Group
@@ -91,7 +95,7 @@ function Home() {
             url=""
             >
                 <Swiper
-                slidesPerView={2}
+                width={128}
                 spaceBetween={16}
                 >
                     <SwiperSlide>
@@ -103,6 +107,34 @@ function Home() {
                     <SwiperSlide>
                         <Book/>
                     </SwiperSlide>
+                    <SwiperSlide>
+                        <Book/>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <Book/>
+                    </SwiperSlide>
+                </Swiper>
+            </Group>
+
+            <Group
+            title="دسته بندی ها"
+            moreTitle="همه دسته بندی ها"
+            url=""
+            >
+                <Swiper
+                spaceBetween={16}
+                width={96}
+                >
+                { categories.map((item , idx) => (
+                    <SwiperSlide
+                    key={idx}
+                    >
+                        <Category
+                        
+                        info={item}
+                        />
+                    </SwiperSlide>
+                ))}
                 </Swiper>
             </Group>
 

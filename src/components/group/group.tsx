@@ -5,13 +5,15 @@ import "swiper/css"
 type props = {
     children : React.ReactNode,
     title : string,
-    url : string
+    url : string,
+    moreTitle ?: string
 }
 
 function Group({
     children,
     title,
-    url
+    url,
+    moreTitle
 } : props) {
   return (
     <div
@@ -50,7 +52,7 @@ function Group({
                 text-[12px]
                 font-normal
                 ">
-                    بیشتر
+                    {moreTitle ? moreTitle :  "بیشتر"}
                 </span>
 
                 <Arrow
