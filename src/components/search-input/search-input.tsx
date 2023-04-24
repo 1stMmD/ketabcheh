@@ -1,9 +1,23 @@
 import { SearchNormal } from "../../svg/icons"
 
-function SearchInput() {
+type props = {
+  Icon ?: React.FC,
+  onSubmit ?: (e: React.FormEvent<HTMLFormElement>) => void,
+  value : string,
+  setValue : (v : string) => void
+}
+
+function SearchInput({
+  Icon,
+  onSubmit,
+  value,
+  setValue
+} : props) {
   return (
-    <div
+    <form
+    onSubmit={onSubmit}
     className="
+    w-full
     flex
     flex-row
     items-center
@@ -18,14 +32,23 @@ function SearchInput() {
     fill-[#041C32]
     stroke-[#041C32]
     ">
+      {
+      Icon ? <Icon/>
+        : 
       <SearchNormal
       className="
       w-[24px]
-
+      flex-shrink-0
       "
-      />
+      />}
 
       <input
+      value={value}
+      onChange={(e) => {
+        setValue(e.target.value)
+      }}
+      name="input"
+      autoComplete="off"
       placeholder="نام نویسنده ،‌ کتاب ،‌ انتشارات و..."
       className="
       text-[14px]
@@ -34,7 +57,7 @@ function SearchInput() {
       outline-none
       "
       />
-    </div>
+    </form>
   )
 }
 

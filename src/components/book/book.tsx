@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { PersianNumber } from "../../helpers/persian-number"
 
 type props = {
@@ -13,7 +14,8 @@ function Book({
     info : { name , author , cover , price }
 } : props) {
   return (
-    <div
+    <Link
+    to=""
     dir="rtl"
     className="
     flex-shrink-0
@@ -63,7 +65,7 @@ function Book({
                 {author.join(",")}
             </p>
         </div>
-    </div>
+    </Link>
   )
 }
 
