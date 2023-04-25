@@ -11,7 +11,7 @@ function Information() {
     author : "",
     category : "",
     publisher : "",
-    keywords : [],
+    keywords : ["سلام"],
     withSignature : false
   })
   return (
@@ -41,11 +41,25 @@ function Information() {
         gap-2
         ">
           <TextInput
+          value={data.name}
+          setValue={(v : string) => {
+            setData(prev => ({
+              ...prev,
+              name : v
+            }))
+          }}
           label="نام کتاب"
           required
           />
 
           <TextInput
+          value={data.author}
+          setValue={(v : string) => {
+            setData(prev => ({
+              ...prev,
+              author : v
+            }))
+          }}
           label="نام نویسنده"
           required
           />
@@ -53,17 +67,34 @@ function Information() {
           <SelectInput/>
 
           <TextInput
+          value={data.publisher}
+          setValue={(v : string) => {
+            setData(prev => ({
+              ...prev,
+              publisher : v
+            }))
+          }}
           label="انتشارات"
           />
 
           <ChipInput
           deleteValue={(i : number) => {
-            return
+            setData(prev => {
+              const clone = [...prev.keywords]
+              clone.splice(i , 1)
+              return({
+                ...prev,
+                keywords : clone
+              })
+            })
           }}
           label="کلمات کلیدی"
-          value={[]}
+          value={data.keywords}
           setValue={(v : string) => {
-            return
+            setData(prev => ({
+              ...prev,
+              keywords : [...prev.keywords, v]
+            }))
           }}
           />
 

@@ -1,15 +1,18 @@
 type props = {
     Icon ?: React.FC<{className : string}>,
     label : string,
-    name ?: string,
-    required ?: boolean
+    required ?: boolean,
+    value : string,
+    setValue : (v : string) => void
+
 }
 
 function TextInput({
     Icon,
     label,
-    name,
-    required = false
+    required = false,
+    setValue,
+    value
 } : props) {
   return (
     <div
@@ -47,7 +50,10 @@ function TextInput({
             <input
             required={required}
             autoComplete="off"
-            name={name}
+            value={value}
+            onChange={(e) => {
+                setValue(e.target.value)
+            }}
             placeholder=" "
             className="
             placeholder-shown
@@ -69,6 +75,7 @@ function TextInput({
             transition-all
             absolute
             right-0
+            top-[0px]
             text-[10px]
             peer-focus:top-[0px]
             peer-focus:text-[10px]
