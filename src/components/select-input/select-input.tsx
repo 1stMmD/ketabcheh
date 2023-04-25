@@ -18,9 +18,8 @@ function SelectInput() {
             items-center
             justify-between
             rounded-[8px]
-            outline
-            outline-[1px]
-            outline-[#8E8E93]
+            border
+            border-[#8E8E93]
             stroke-[#292D32]
             fill-[#292D32]
             focus-within:outline-primary
@@ -35,6 +34,9 @@ function SelectInput() {
                 text-typography
                 text-[14px]
                 font-medium
+                whitespace-nowrap
+                overflow-hidden
+                text-ellipsis
                 '>
                 انتخاب دسته بندی
                 </p>
@@ -65,6 +67,8 @@ function SelectInput() {
             outline
             outline-[1px]
             outline-[#8E8E93]
+            z-[10]
+            bg-white
             '>
                 {test_value.map((item, idx , list) => (
                     <>

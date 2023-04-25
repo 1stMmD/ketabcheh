@@ -1,19 +1,21 @@
 type props = {
     children : React.ReactNode,
-    className? : string
+    className? : string,
+    size ?: "lg" | "sm"
 }
 const Button = ({
     children,
-    className
+    className,
+    size
 } : props) => {
+  const style = sizes[size ?? "lg"]
+
   return (
     <button
     className={`
-    w-full
-    text-[16px]
+    ${style}
     text-white
     bg-primary
-    py-3
     rounded-[8px]
     font-light
     ${className ?? ""}
@@ -24,3 +26,8 @@ const Button = ({
 }
 
 export default Button
+
+const sizes = {
+  "lg" : "text-[16px] py-3 px-5 w-full",
+  "sm" : "text-[10px] p-3 px-5"
+}

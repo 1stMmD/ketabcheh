@@ -1,7 +1,7 @@
 type props = {
     Icon ?: React.FC<{className : string}>,
     label : string,
-    name : string,
+    name ?: string,
     required ?: boolean
 }
 
@@ -20,9 +20,8 @@ function TextInput({
     flex-row
     items-center
     rounded-[8px]
-    outline
-    outline-[1px]
-    outline-[#8E8E93]
+    border
+    border-[#8E8E93]
     stroke-[#292D32]
     fill-[#292D32]
     focus-within:outline-primary

@@ -34,9 +34,8 @@ function ChipInput({
         flex-row
         items-center
         rounded-[8px]
-        outline
-        outline-[1px]
-        outline-[#8E8E93]
+        border
+        border-[#8E8E93]
         stroke-[#292D32]
         fill-[#292D32]
         focus-within:outline-primary

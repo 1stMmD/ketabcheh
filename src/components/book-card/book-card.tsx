@@ -8,7 +8,6 @@ function BookCard() {
     className='
     w-full
     flex
-    items-stretch
     gap-3
     '>
 
