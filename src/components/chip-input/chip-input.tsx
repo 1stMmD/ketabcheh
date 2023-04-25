@@ -38,7 +38,7 @@ function ChipInput({
         border-[#8E8E93]
         stroke-[#292D32]
         fill-[#292D32]
-        focus-within:outline-primary
+        focus-within:border-primary
         focus-within:stroke-primary
         focus-within:fill-primary
         focus-within:shadow-[0px_0px_0px_2px]
