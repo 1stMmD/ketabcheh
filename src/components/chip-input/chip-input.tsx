@@ -78,11 +78,11 @@ function ChipInput({
                             <span
                             className='
                             rounded-sm
-                            bg-primary/10
-                            text-neutral-800
+                            bg-primary/20
+                            text-typography
                             text-[10px]
-                            px-2
-                            py-1
+                            px-[6px]
+                            py-[3px]
                             '
                             key={idx}
                             onClick={() => {
@@ -101,6 +101,7 @@ function ChipInput({
                     }}
                     autoComplete="off"
                     className="
+                    w-full
                     outline-none
                     text-[14px]
                     font-medium
@@ -122,9 +123,9 @@ function ChipInput({
                 peer-focus-within:!translate-y-[0]
                 ${ !text && !value.length ?
                     `
-                    text-[14px]
-                    top-[50%]
-                    -translate-y-[50%]
+                    !text-[14px]
+                    !top-[50%]
+                    !-translate-y-[50%]
                     `
                     :
                     ``

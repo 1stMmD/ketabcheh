@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import ChipInput from '../../components/chip-input/chip-input'
 import TextInput from '../../components/common/text-input/text-input'
+import SelectInput from '../../components/select-input/select-input'
 
 function OrderBook() {
     const [ value , setValue ] = useState<string[] | []>([])
@@ -11,6 +12,7 @@ function OrderBook() {
         min-h-screen
         flex
         flex-col
+        gap-3
         p-3
         font-[IRANSans]
         '>
@@ -28,6 +30,8 @@ function OrderBook() {
             }}
             label='کلمات کلیدی'
             />
+
+            <SelectInput/>
         </div>
     )
 }
