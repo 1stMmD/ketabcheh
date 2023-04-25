@@ -9,6 +9,7 @@ import IconButton from '../../components/common/icon-button/icon-button'
 import Information from './information'
 import GetNotified from './get-notified'
 import PendingOrder from './pending-order'
+import OrderResults from './order-results'
 
 function OrderBook() {
     return (
@@ -155,5 +156,6 @@ const process = [
     Guidance,
     Information,
     GetNotified,
-    PendingOrder
+    PendingOrder,
+    OrderResults
 ]
