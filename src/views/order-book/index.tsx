@@ -7,6 +7,7 @@ import { BackArrow, Profile } from '../../svg/icons'
 import { KetabchehLogo } from '../../svg/ketabcheh-logo'
 import IconButton from '../../components/common/icon-button/icon-button'
 import Information from './information'
+import GetNotified from './get-notified'
 
 function OrderBook() {
     return (
@@ -87,8 +88,9 @@ function OrderBook() {
                 
             </div>
 
-            {process.map((Component,idx) => (
+            {process.map((Component,idx,list) => (
                 <div
+                key={idx}
                 className='
                 max-w-full
                 relative
@@ -128,7 +130,7 @@ function OrderBook() {
                             />
                         </span>
     
-                        <span
+                        { idx < list.length -1 ? <span
                         className='
                         flex-shrink
                         flex
@@ -136,7 +138,7 @@ function OrderBook() {
                         h-full
                         bg-primary
                         '
-                        />
+                        /> : <></>}
                     </div>
     
                     <Component/>
@@ -150,5 +152,6 @@ export default OrderBook
 
 const process = [
     Guidance,
-    Information
+    Information,
+    GetNotified
 ]
