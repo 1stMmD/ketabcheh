@@ -1,13 +1,15 @@
 type props = {
-    Icon : React.FC<{className : string}>,
+    Icon ?: React.FC<{className : string}>,
     label : string,
-    name : string
+    name : string,
+    required ?: boolean
 }
 
 function TextInput({
     Icon,
     label,
-    name
+    name,
+    required = false
 } : props) {
   return (
     <div
@@ -30,12 +32,12 @@ function TextInput({
     focus-within:shadow-primary/30
     gap-2
     ">
-        <Icon
+        {Icon ? <Icon
         className="
         w-[24px]
         stroke-inherit
         "
-        />
+        /> : <></>}
         
         <div
         className="
@@ -44,6 +46,7 @@ function TextInput({
         flex-shrink
         ">
             <input
+            required={required}
             autoComplete="off"
             name={name}
             placeholder=" "
@@ -59,6 +62,10 @@ function TextInput({
             />
             <label
             className="
+            flex
+            items-center
+            justify-center
+            gap-1
             pointer-events-none
             transition-all
             absolute
@@ -71,7 +78,17 @@ function TextInput({
             peer-placeholder-shown:top-[50%]
             peer-placeholder-shown:-translate-y-[50%]
             ">
-                {label}
+                {label} 
+                
+                {required ?
+                <span
+                className="
+                text-red-500
+                text-[14px]
+                ">
+                    *
+                </span> :
+                <></>}
             </label>
 
         </div>

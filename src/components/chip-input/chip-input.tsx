@@ -101,7 +101,6 @@ function ChipInput({
                     }}
                     autoComplete="off"
                     className="
-                    w-full
                     outline-none
                     text-[14px]
                     font-medium
