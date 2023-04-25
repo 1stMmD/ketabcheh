@@ -12,6 +12,7 @@ import Library from "./views/library"
 import BookDetails from "./views/book-details"
 import Search from "./views/search"
 import Results from "./views/search/results"
+import OrderBook from "./views/order-book"
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
           <Route path="/search" element={<Search/>}/>
           <Route path="/search/:text" element={<Results/>}/>
           <Route path="/library" element={<Library/>}/>
-          <Route path="/cart" element={<Home/>}/>
+          <Route path="/cart" element={<OrderBook/>}/>
           <Route path="/book" element={<BookDetails/>}/>
         </Routes>
 
