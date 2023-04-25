@@ -8,6 +8,7 @@ import { KetabchehLogo } from '../../svg/ketabcheh-logo'
 import IconButton from '../../components/common/icon-button/icon-button'
 import Information from './information'
 import GetNotified from './get-notified'
+import PendingOrder from './pending-order'
 
 function OrderBook() {
     return (
@@ -153,5 +154,6 @@ export default OrderBook
 const process = [
     Guidance,
     Information,
-    GetNotified
+    GetNotified,
+    PendingOrder
 ]

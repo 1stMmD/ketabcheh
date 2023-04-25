@@ -19,6 +19,7 @@ function GetNotified() {
         flex-col
         text-primary-dark
         overflow-hidden
+        pb-6
         ">
             <h3
             className="
