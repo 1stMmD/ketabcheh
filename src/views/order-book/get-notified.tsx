@@ -39,7 +39,7 @@ function GetNotified() {
 
                 <TextInput
                 required
-                label={labels[data.type]}
+                label={labels[(data.type as "sms" | "email")]}
                 value={data.value}
                 setValue={(v : string) => {
                     setData(prev => ({
