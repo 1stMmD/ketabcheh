@@ -1,7 +1,4 @@
-import { useState } from 'react'
-import ChipInput from '../../components/chip-input/chip-input'
-import TextInput from '../../components/common/text-input/text-input'
-import SelectInput from '../../components/select-input/select-input'
+import { useState } from "react"
 import Guidance from './guidance'
 import { BackArrow, Profile } from '../../svg/icons'
 import { KetabchehLogo } from '../../svg/ketabcheh-logo'
@@ -10,8 +7,81 @@ import Information from './information'
 import GetNotified from './get-notified'
 import PendingOrder from './pending-order'
 import OrderResults from './order-results'
+import OrderConfirmation from './order-confirmation'
 
 function OrderBook() {
+
+    const [process , setProcess] = useState([
+        {
+            passed : false,
+            Component : Guidance,
+            props : {},
+            func : () => {
+                setProcess(prev => {
+                    const clone = [...prev]
+                    clone[0] = {...clone[0],passed : true}
+                    return clone
+                })
+            }
+        },
+        {
+            passed : false,
+            Component : Information,
+            props : {},
+            func : () => {
+                setProcess(prev => {
+                    const clone = [...prev]
+                    clone[1] = {...clone[1],passed : true}
+                    return clone
+                })
+            }
+        },
+        {
+            passed : false,
+            Component : GetNotified,
+            props : {},
+            func : () => {
+                setProcess(prev => {
+                    const clone = [...prev]
+                    clone[2] = {...clone[2],passed : true}
+                    return clone
+                })
+            }
+        },
+        {
+            passed : false,
+            Component : PendingOrder,
+            props : {},
+            func : () => {
+                setProcess(prev => {
+                    const clone = [...prev]
+                    clone[3] = {...clone[3],passed : true}
+                    return clone
+                })
+            }
+        },
+        {
+            passed : false,
+            Component : OrderResults,
+            props : {},
+            func : () => {
+                setProcess(prev => {
+                    const clone = [...prev]
+                    clone[4] = {...clone[4],passed : true}
+                    return clone
+                })
+            }
+        },
+        {
+            passed : false,
+            Component : OrderConfirmation,
+            props : {},
+            func : () => {
+                return
+            }
+        },
+    ])
+
     return (
         <div
         className='
@@ -20,6 +90,7 @@ function OrderBook() {
         flex
         flex-col
         p-3
+        pb-0
         font-[IRANSans]
         '>
             <div
@@ -90,72 +161,68 @@ function OrderBook() {
                 
             </div>
 
-            {process.map((Component,idx,list) => (
-                <div
-                key={idx}
-                className='
-                max-w-full
-                relative
-                flex
-                gap-2
-                '>
+            {process.map(({Component,passed,func},idx,list) => {
+                if(!list[idx - 1]?.passed && idx !== 0) return <></>
+                return(
                     <div
+                    key={idx}
                     className='
-                    flex-shrink-0
-                    items-center
+                    max-w-full
+                    relative
                     flex
-                    flex-col
-                    w-fit
-                    max-w-fit
-                    overflow-hidden
-                    min-h-full
+                    gap-2
                     '>
-                        <span
+                        <div
                         className='
-                        flex
-                        items-center
-                        justify-center
                         flex-shrink-0
-                        bg-primary
-                        w-[24px]
-                        aspect-square
-                        rounded-full
-                        '
-                        >
+                        items-center
+                        flex
+                        flex-col
+                        w-fit
+                        max-w-fit
+                        overflow-hidden
+                        min-h-full
+                        '>
                             <span
                             className='
-                            w-[12px]
+                            flex
+                            items-center
+                            justify-center
+                            flex-shrink-0
+                            bg-primary
+                            w-[24px]
                             aspect-square
-                            bg-white
                             rounded-full
                             '
-                            />
-                        </span>
-    
-                        { idx < list.length -1 ? <span
-                        className='
-                        flex-shrink
-                        flex
-                        w-[2px]
-                        h-full
-                        bg-primary
-                        '
-                        /> : <></>}
+                            >
+                                <span
+                                className='
+                                w-[12px]
+                                aspect-square
+                                bg-white
+                                rounded-full
+                                '
+                                />
+                            </span>
+        
+                            { passed ? <span
+                            className='
+                            flex-shrink
+                            flex
+                            w-[2px]
+                            h-full
+                            bg-primary
+                            '
+                            /> : <></>}
+                        </div>
+        
+                        <Component
+                        onSubmit={func}/>
                     </div>
-    
-                    <Component/>
-                </div>
-            ))}
+                )
+            })}
         </div>
     )
 }
 
 export default OrderBook
-
-const process = [
-    Guidance,
-    Information,
-    GetNotified,
-    PendingOrder,
-    OrderResults
-]

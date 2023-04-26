@@ -1,6 +1,17 @@
-function PendingOrder() {
+type props = {
+  onSubmit : () => void
+}
+
+function PendingOrder({
+  onSubmit
+} : props) {
   return (
     <div
+    ref={() => {
+      setTimeout(() => {
+        onSubmit()
+      }, 2000);
+    }}
     className="
     flex-shrink
     w-full

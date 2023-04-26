@@ -87,22 +87,18 @@ function Signup() {
                 ">
                 
                     <TextInput
-                    name="name"
                     Icon={User}
                     label="نام و نام خانوادگی"
                     />
                     <TextInput
-                    name="email"
                     Icon={Email}
                     label="ایمیل"
                     />
                     <TextInput
-                    name="phone"
                     Icon={Phone}
                     label="شماره تلفن"
                     />
                     <TextInput
-                    name="password"
                     Icon={Password}
                     label="رمز عبور"
                     />

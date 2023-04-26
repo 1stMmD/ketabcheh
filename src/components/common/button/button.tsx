@@ -1,17 +1,20 @@
 type props = {
     children : React.ReactNode,
     className? : string,
-    size ?: "lg" | "sm"
+    size ?: "lg" | "sm",
+    onClick ?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
 }
 const Button = ({
     children,
     className,
-    size
+    size,
+    onClick
 } : props) => {
   const style = sizes[size ?? "lg"]
 
   return (
     <button
+    onClick={onClick}
     className={`
     ${style}
     text-white

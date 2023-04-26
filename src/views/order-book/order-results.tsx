@@ -1,6 +1,12 @@
 import Button from "../../components/common/button/button";
 
-function OrderResults() {
+type props = {
+    onSubmit : () => void
+}
+
+function OrderResults({
+    onSubmit
+} : props) {
     const result = results["success"];
 
     return (
@@ -68,6 +74,9 @@ function OrderResults() {
                 mt-4
                 ">
                     <Button
+                    onClick={() => {
+                        onSubmit()
+                    }}
                     size="sm">
                         {result.button}
                     </Button>

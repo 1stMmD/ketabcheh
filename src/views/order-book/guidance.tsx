@@ -1,8 +1,18 @@
 import Button from "../../components/common/button/button"
 
-function Guidance() {
+type props = {
+    onSubmit : () => void
+}
+
+function Guidance({
+    onSubmit
+} : props) {
   return (
     <form
+    onSubmit={(e) => {
+        e.preventDefault()
+        onSubmit()
+    }}
     className="
     flex
     flex-col

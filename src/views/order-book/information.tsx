@@ -5,7 +5,13 @@ import Button from "../../components/common/button/button"
 import TextInput from "../../components/common/text-input/text-input"
 import SelectInput from "../../components/select-input/select-input"
 
-function Information() {
+type props = {
+  onSubmit : () => void
+}
+
+function Information({
+  onSubmit
+} : props) {
   const [data , setData] = useState({
     name : "",
     author : "",
@@ -116,6 +122,9 @@ function Information() {
         mt-4
         ">
             <Button
+            onClick={() => {
+              onSubmit()
+            }}
             size="sm"
             className="
             !w-[unset]

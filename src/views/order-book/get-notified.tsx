@@ -3,7 +3,13 @@ import SelectInput from '../../components/select-input/select-input'
 import TextInput from '../../components/common/text-input/text-input'
 import Button from '../../components/common/button/button'
 
-function GetNotified() {
+type props = {
+    onSubmit : () => void
+}
+
+function GetNotified({
+    onSubmit
+} : props) {
     const [data , setData] = useState({
         type : "sms",
         value : ""
@@ -11,6 +17,10 @@ function GetNotified() {
 
     return (
         <form
+        onSubmit={(e) => {
+            e.preventDefault()
+            onSubmit()
+        }}
         className="
         flex-shrink
         w-full
