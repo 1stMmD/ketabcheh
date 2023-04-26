@@ -1,18 +1,30 @@
-import React from 'react'
 import { PersianNumber } from '../../helpers/persian-number'
 import { UserTick } from '../../svg/icons'
 
-function BookCard() {
+type props = {
+    info : {
+        title :string,
+        author : string[],
+        publisher : string,
+        price : number,
+        cover : string
+    }
+}
+
+function BookCard({
+    info : {author,price,publisher,title, cover}
+} : props) {
   return (
     <div
     className='
+    relative
     w-full
     flex
     gap-3
     '>
 
         <img
-        src={"https://newcdn.fidibo.com/images/books/135684_11806_normal.jpg?width=200"}
+        src={cover}
         className="
         rounded-[8px]
         w-[128px]
@@ -41,22 +53,27 @@ function BookCard() {
                 <h3
                 className='
                 text-[14px]
+                overflow-hidden
+                text-ellipsis
                 '>
-                قدرت شروع ناقص
+                    {title}
                 </h3>
 
                 <h4
                 className='
                 text-[10px]
+                overflow-hidden
+                whitespace-nowrap
+                text-ellipsis
                 '>
-                اثر جیمز کلییز
+                    {author.join(" , ")}
                 </h4>
 
                 <p
                 className='
                 text-[10px]
                 '>
-                انتشارات :‌ نشر سبز
+                انتشارات :‌ {publisher} 
                 </p>
             </div>
 

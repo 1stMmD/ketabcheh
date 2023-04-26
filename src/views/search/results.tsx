@@ -5,11 +5,14 @@ import { BackArrow } from '../../svg/icons'
 import { useNavigate, useParams } from 'react-router'
 import BookCard from '../../components/book-card/book-card'
 import Button from '../../components/common/button/button'
+import { books } from '../../constants/books'
 
 function Results() {
     const { text } = useParams()
     const [value , setValue] = useState<string>(text ?? "")
     const navigate = useNavigate()
+
+    const searchResult = books.filter((b) => b.title.search(text ?? "") >= 0)
 
     useEffect(() => {
         setValue(text ?? "")
@@ -53,7 +56,7 @@ function Results() {
 
             </div>
             
-            {text === "سلام" ? 
+            {searchResult.length ? 
             <>
                 <div
                 className='
@@ -95,11 +98,18 @@ function Results() {
                 flex-col
                 gap-4
                 '>
-                    <BookCard/>
-                    <BookCard/>
-                    <BookCard/>
-                    <BookCard/>
-                    <BookCard/>
+                    {searchResult.map(({author , cover,price,publisher,title},idx) => (
+                        <BookCard
+                        info={{
+                            author,
+                            cover,
+                            price,
+                            publisher,
+                            title
+                        }}
+                        key={idx}
+                        />
+                    ))}
                 </div>
             </> 
             :
@@ -138,6 +148,9 @@ function Results() {
                     </h5>
                     
                     <Button
+                    onClick={() => {
+                        navigate("/order")
+                    }}
                     className="
                     p-3
                     !w-[min(146px_,_100%)]

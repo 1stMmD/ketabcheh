@@ -8,8 +8,11 @@ import GetNotified from './get-notified'
 import PendingOrder from './pending-order'
 import OrderResults from './order-results'
 import OrderConfirmation from './order-confirmation'
+import { useNavigate } from "react-router"
 
 function OrderBook() {
+
+    const navigate = useNavigate()
 
     const [process , setProcess] = useState([
         {
@@ -103,6 +106,9 @@ function OrderBook() {
             mb-4
             '>
                 <IconButton
+                onClick={() => {
+                    navigate(-1)
+                }}
                 Icon={BackArrow}
                 />
 

@@ -193,6 +193,9 @@ function Home() {
                 </h5>
                 
                 <Button
+                onClick={() => {
+                    navigate("/order")
+                }}
                 className="
                 p-3
                 !w-[min(146px_,_100%)]
