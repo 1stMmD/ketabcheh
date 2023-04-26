@@ -105,6 +105,7 @@ function BookDetails() {
                 text-[22px]
                 font-medium
                 text-primary-dark
+                text-center
                 '>
                     {book[0].title}
                 </h1>
@@ -113,8 +114,9 @@ function BookDetails() {
                 className='
                 text-[16px]
                 text-primary-dark/50
+                text-center
                 '>
-                    {book[0].author}
+                    {book[0].author.join(" , ")}
                 </h3>
 
                 <Button>
