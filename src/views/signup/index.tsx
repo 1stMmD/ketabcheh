@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { useNavigate } from "react-router"
 import Button from "../../components/common/button/button"
 import TextInput from "../../components/common/text-input/text-input"
@@ -6,7 +7,13 @@ import { KetabchehLogo } from "../../svg/ketabcheh-logo"
 
 function Signup() {
     const navigate = useNavigate()
-    
+    const [data, setData] = useState({
+        name : "",
+        email : "",
+        phone : "",
+        password : ""
+    })
+
     return (
         <div
         className="
@@ -87,18 +94,48 @@ function Signup() {
                 ">
                 
                     <TextInput
+                    value={data.name}
+                    setValue={(v : string) => {
+                        setData(prev => ({
+                            ...prev,
+                            data : v
+                        }))
+                    }}
                     Icon={User}
                     label="نام و نام خانوادگی"
                     />
+
                     <TextInput
+                    value={data.email}
+                    setValue={(v : string) => {
+                        setData(prev => ({
+                            ...prev,
+                            email : v
+                        }))
+                    }}
                     Icon={Email}
                     label="ایمیل"
                     />
                     <TextInput
+                    value={data.phone}
+                    setValue={(v : string) => {
+                        setData(prev => ({
+                            ...prev,
+                            phone : v
+                        }))
+                    }}
                     Icon={Phone}
                     label="شماره تلفن"
                     />
+
                     <TextInput
+                    value={data.password}
+                    setValue={(v : string) => {
+                        setData(prev => ({
+                            ...prev,
+                            password : v
+                        }))
+                    }}
                     Icon={Password}
                     label="رمز عبور"
                     />

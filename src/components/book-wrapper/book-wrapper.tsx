@@ -2,13 +2,11 @@ import { Swiper , SwiperSlide } from "swiper/react"
 import { books } from "../../constants/books"
 import Book from "../book/book"
 
-type props = {
-    api : string
-}
+// type props = {
+//     api : string
+// }
 
-function BookWrapper({
-    api
-} : props) {
+function BookWrapper() {
   return (
     <Swiper
     spaceBetween={16}
@@ -17,7 +15,8 @@ function BookWrapper({
 
         {books.map(({title , author , cover , price , id} , idx) => (
             <SwiperSlide
-            key={idx}>
+            key={idx}
+            >
                 <Book
                 url={`/book/${id}`}
                 info={{

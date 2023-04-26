@@ -32,25 +32,19 @@ function Library() {
         title="جدیدترین کتاب های کمیاب"
         url=""
         >
-            <BookWrapper
-            api=""
-            />
+            <BookWrapper/>
         </Group>
         <Group
         title="جدیدترین کتاب های کمیاب"
         url=""
         >
-            <BookWrapper
-            api=""
-            />
+            <BookWrapper/>
         </Group>
         <Group
         title="جدیدترین کتاب های کمیاب"
         url=""
         >
-            <BookWrapper
-            api=""
-            />
+            <BookWrapper/>
         </Group>
     </div>
   )

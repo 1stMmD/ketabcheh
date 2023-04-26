@@ -111,9 +111,7 @@ function Home() {
                 title="جدیدترین کتاب های کمیاب"
                 url=""
                 >
-                    <BookWrapper
-                    api=""
-                    />
+                    <BookWrapper/>
                 </Group>
 
                 <Group
