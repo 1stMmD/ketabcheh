@@ -17,7 +17,7 @@ function Information({
     author : "",
     category : "",
     publisher : "",
-    keywords : ["سلام"],
+    keywords : [],
     withSignature : false
   })
   return (
