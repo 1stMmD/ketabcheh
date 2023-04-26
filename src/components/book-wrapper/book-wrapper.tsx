@@ -15,9 +15,11 @@ function BookWrapper({
     width={128}
     >
 
-        {books.map(({title , author , cover , price} , idx) => (
-            <SwiperSlide>
+        {books.map(({title , author , cover , price , id} , idx) => (
+            <SwiperSlide
+            key={idx}>
                 <Book
+                url={`/book/${id}`}
                 info={{
                     name : title,
                     author,

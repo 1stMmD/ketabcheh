@@ -30,8 +30,9 @@ function App() {
           <Route path="/search" element={<Search/>}/>
           <Route path="/search/:text" element={<Results/>}/>
           <Route path="/library" element={<Library/>}/>
-          <Route path="/cart" element={<OrderBook/>}/>
-          <Route path="/book" element={<BookDetails/>}/>
+          <Route path="/order" element={<OrderBook/>}/>
+          <Route path="/book/:id" element={<BookDetails/>}/>
+          <Route path="/cart" element={<></>}/>
         </Routes>
 
         <NavbarMobile/>

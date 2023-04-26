@@ -1,28 +1,42 @@
-function Information() {
+import { PersianNumber } from "../../helpers/persian-number"
+
+type props = {
+    info : {
+        publisher : string,
+        author : string[],
+        pages : number,
+        price : number,
+        published_at : string,
+    }
+}
+
+function Information({
+    info : { author, pages, price, published_at, publisher }
+} : props) {
     const sections = [
         {
             name : "انتشارات",
-            value : "خیلی سبز",
+            value : publisher,
             color : "text-primary"
         },
         {
             name : "نویسندگان",
-            value : "رمضان عباسی ،‌ میثم پریش",
+            value : author.join(" , "),
             color : "text-primary"
         },
         {
             name : "تعداد صفحات",
-            value : "۳۵۰",
+            value : PersianNumber(pages),
             color : ""
         },
         {
             name : "قیمت",
-            value : "۳۶,۰۰۰",
+            value : PersianNumber(price),
             color : ""
         },
         {
             name : "تاریخ نشر",
-            value : "۱۳۹۶/۱۰/۱۵",
+            value : published_at,
             color : ""
         },
     ]
@@ -63,10 +77,12 @@ function Information() {
                         items-center
                         justify-between
                         text-primary-dark
+                        gap-2
                         "
                         >
                             <p
                             className="
+                            flex-shrink-0
                             text-ellipsis
                             overflow-hidden
                             whitespace-nowrap

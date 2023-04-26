@@ -5,6 +5,7 @@ import { Link } from "react-router-dom"
 function NavbarMobile() {
     const location = useLocation()
 
+    if(!show_navbar.some((path) => location.pathname.startsWith(path))) return <></>
     return (
         <nav
         className="
@@ -88,4 +89,13 @@ const sections = [
         url : "/cart",
         Icon : ShoppingCart
     },
+]
+
+const show_navbar = [
+    "/home",
+    "/library",
+    "/search",
+    "/cart",
+    "/order",
+    "/book",
 ]

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import { PersianNumber } from "../../helpers/persian-number"
 
 type props = {
+    url ?: string,
     info : {
         name : string,
         author : string[],
@@ -11,11 +12,12 @@ type props = {
 }
 
 function Book({
-    info : { name , author , cover , price }
+    info : { name , author , cover , price },
+    url
 } : props) {
   return (
     <Link
-    to=""
+    to={url ?? ""}
     dir="rtl"
     className="
     flex-shrink-0
@@ -60,9 +62,10 @@ function Book({
             <p
             className="
             text-[12px]
+            overflow-hidden whitespace-nowrap text-ellipsis
             "
             >
-                {author.join(",")}
+                {author.join(" , ")}
             </p>
         </div>
     </Link>
