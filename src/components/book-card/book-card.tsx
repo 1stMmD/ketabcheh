@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { PersianNumber } from '../../helpers/persian-number'
 import { UserTick } from '../../svg/icons'
 
@@ -7,15 +8,17 @@ type props = {
         author : string[],
         publisher : string,
         price : number,
-        cover : string
+        cover : string,
+        id : string
     }
 }
 
 function BookCard({
-    info : {author,price,publisher,title, cover}
+    info : {author,price,publisher,title, cover ,id}
 } : props) {
   return (
-    <div
+    <Link
+    to={`/book/${id}`}
     className='
     relative
     w-full
@@ -122,13 +125,13 @@ function BookCard({
                 overflow-hidden
                 whitespace-nowrap
                 '>
-                    {PersianNumber(140000)}
+                    {PersianNumber(price)}
                 </p>
                 
             </div>
         </div>
 
-    </div>
+    </Link>
   )
 }
 

@@ -98,9 +98,10 @@ function Results() {
                 flex-col
                 gap-4
                 '>
-                    {searchResult.map(({author , cover,price,publisher,title},idx) => (
+                    {searchResult.map(({author , cover,price,publisher,title, id},idx) => (
                         <BookCard
                         info={{
+                            id,
                             author,
                             cover,
                             price,
