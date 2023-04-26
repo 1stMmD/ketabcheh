@@ -98,6 +98,14 @@ function App() {
         </Suspense>
 
         <NavbarMobile/>
+
+        {/* placeholder div */}
+        <div
+        className="
+        block
+        w-full
+        h-[56px]
+        "/>
         
       </main>
     </Router>
