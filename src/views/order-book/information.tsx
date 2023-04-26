@@ -17,7 +17,7 @@ function Information({
     author : "",
     category : "",
     publisher : "",
-    keywords : [],
+    keywords : ([] as string[]),
     withSignature : false
   })
   return (
