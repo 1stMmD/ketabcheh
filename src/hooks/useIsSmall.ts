@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-// create a state who shows if the screen is smaller than 420px or not
+// create a state who shows if the screen is smaller than 450px or not
 export const useIsSmall = () => {
     const [isSmall , setIsSmall] = useState<boolean>(true)
 
@@ -8,12 +8,12 @@ export const useIsSmall = () => {
         const onChange = (w : MediaQueryListEvent) => {
             setIsSmall(w.matches)
         }
-        const mediaQuery = window.matchMedia("(max-width : 420px)")
-
-        mediaQuery.addEventListener("change",onChange)
+        const mediaQuery = window.matchMedia("(max-width : 450px)")
+        setIsSmall(mediaQuery.matches)
+        mediaQuery.addListener(onChange)
 
         return () => {
-            mediaQuery.removeEventListener("change",onChange)
+            mediaQuery.removeListener(onChange)
         }
     },[])
 

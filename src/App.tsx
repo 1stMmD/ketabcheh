@@ -46,6 +46,7 @@ function App() {
     text-white
     items-center
     justify-center
+    font-[IRANSans]
     ">
         <p
         className="
