@@ -38,7 +38,7 @@ function Search() {
                 {categories.map(({Icon, title, url},idx , list) => (
                     <>
                         <div
-                        key={title}
+                        key={title + idx}
                         className='
                         flex
                         justify-between
@@ -79,7 +79,7 @@ function Search() {
 
                         { idx < list.length - 1 ?
                         <span
-                        key={idx}
+                        key={idx + title}
                         className='
                         my-2
                         w-full
