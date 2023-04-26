@@ -20,7 +20,7 @@ function NavbarMobile() {
             bg-[#F5F5F5]
             rounded-tr-[20px]
             rounded-tl-[20px]
-            p-2
+            py-3
             ">
                 {sections.map(({ url , Icon , title }) => {
                     const selected = location.pathname.startsWith(url)
