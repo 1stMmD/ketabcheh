@@ -7,63 +7,73 @@ function NavbarMobile() {
 
     if(!show_navbar.some((path) => location.pathname.startsWith(path))) return <></>
     return (
-        <nav
-        className="
-        flex
-        items-center
-        justify-evenly
-        fixed
-        w-full
-        bottom-0
-        z-[10]
-        bg-[#F5F5F5]
-        rounded-tr-[20px]
-        rounded-tl-[20px]
-        p-2
-        ">
-            {sections.map(({ url , Icon , title }) => {
-                const selected = location.pathname.startsWith(url)
+        <>
+            <nav
+            className="
+            flex
+            items-center
+            justify-evenly
+            fixed
+            w-full
+            bottom-0
+            z-[10]
+            bg-[#F5F5F5]
+            rounded-tr-[20px]
+            rounded-tl-[20px]
+            p-2
+            ">
+                {sections.map(({ url , Icon , title }) => {
+                    const selected = location.pathname.startsWith(url)
 
-                return (
-                    <Link
-                    key={title}
-                    to={url}
-                    className={`
-                    flex
-                    justify-center
-                    items-center
-                    p-2
-                    rounded-[10px]
-                    ${selected ? "bg-primary/20 gap-2" : ""}
-                    `}
-                    >
-                        <Icon
+                    return (
+                        <Link
+                        key={title}
+                        to={url}
                         className={`
-                        w-[24px]
-                        ${selected ? "fill-primary" : "fill-primary-dark"}
+                        flex
+                        justify-center
+                        items-center
+                        p-2
+                        rounded-[10px]
+                        ${selected ? "bg-primary/20 gap-2" : ""}
                         `}
-                        />
-                        
-                        <p
-                        className={`
-                        transition-[max-height]
-                        duration-500
-                        overflow-hidden
-                        max-h-0
-                        max-w-0
-                        text-[12px]
-                        font-bold
-                        font-[Kalameh]
-                        leading-none
-                        text-primary
-                        ${selected ? "max-h-[100px] max-w-[100px]" : ""}
-                        `}>
-                            {title}
-                        </p> 
-                    </Link>
-                )
-            })}
-        </nav>
+                        >
+                            <Icon
+                            className={`
+                            w-[24px]
+                            ${selected ? "fill-primary" : "fill-primary-dark"}
+                            `}
+                            />
+                            
+                            <p
+                            className={`
+                            transition-[max-height]
+                            duration-500
+                            overflow-hidden
+                            max-h-0
+                            max-w-0
+                            text-[12px]
+                            font-bold
+                            font-[Kalameh]
+                            leading-none
+                            text-primary
+                            ${selected ? "max-h-[100px] max-w-[100px]" : ""}
+                            `}>
+                                {title}
+                            </p> 
+                        </Link>
+                    )
+                })}
+            </nav>
+
+            {/* placeholder div */}
+            <div
+            className="
+            block
+            w-full
+            h-[56px]
+            "/>
+        </>
     )
 }
 
