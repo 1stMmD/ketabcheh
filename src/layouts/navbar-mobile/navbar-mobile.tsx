@@ -71,7 +71,7 @@ function NavbarMobile() {
             className="
             block
             w-full
-            h-[56px]
+            h-[64px]
             "/>
         </>
     )
