@@ -7,22 +7,22 @@
 
 @font-face {
     font-family: Kalameh;
-    src: url("../public/Kalameh\ Bold.ttf");
+    src: url("../public/KalamehBold.ttf");
 }
 
 @font-face {
     font-family: IRANSans;
-    src: url("../public/IRANSans\ UltraLight.ttf");
+    src: url("../public/IRANSansUltraLight.ttf");
     font-weight: 200;
 }
 @font-face {
     font-family: IRANSans;
-    src: url("../public/IRANSans\ Regular.ttf");
+    src: url("../public/IRANSansRegular.ttf");
     font-weight: 400;
 }
 @font-face {
     font-family: IRANSans;
-    src: url("../public/IRANSans\ Medium.ttf");
+    src: url("../public/IRANSansMedium.ttf");
     font-weight: 500;
 }
 
