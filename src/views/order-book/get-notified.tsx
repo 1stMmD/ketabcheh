@@ -11,7 +11,7 @@ function GetNotified({
     onSubmit
 } : props) {
     const [data , setData] = useState({
-        type : "sms",
+        type : "",
         value : ""
     })
 
@@ -46,19 +46,29 @@ function GetNotified({
             flex-col
             gap-2
             ">
-                <SelectInput/>
+                <SelectInput
+                label='طریقه اطلاع رسانی'
+                value={(select_labels[(data.type as "sms" | "email")])}
+                values={Object.values(select_labels)}
+                setValue={(v : string) => {
+                    setData(prev => ({
+                        ...prev,
+                        type : Object.entries(select_labels).filter(item => item[1] === v)[0][0]
+                    }))
+                }}
+                />
 
-                <TextInput
+                { data.type ? <TextInput
                 required
                 label={labels[(data.type as "sms" | "email")]}
                 value={data.value}
-                setValue={(v : string) => {
+                setValue={(v : string) => {                    
                     setData(prev => ({
                         ...prev,
                         value : v
                     }))
                 }}
-                />
+                /> : ""}
             </div>
             
             <div
@@ -84,4 +94,9 @@ export default GetNotified
 const labels = {
     "sms" : "شماره تلفن خود را وارد کنید",
     "email" : "ایمیل خود را وارد کنید"
+}
+
+const select_labels = {
+    "sms" : "از طریق اس ام اس",
+    "email" : "از طریق ایمیل",
 }

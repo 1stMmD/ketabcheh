@@ -1,11 +1,28 @@
 import { useState } from 'react'
 import { BackArrow } from '../../svg/icons'
 
-function SelectInput() {
+type props = {
+    label : string,
+    values : string[],
+    value : string,
+    setValue : (v : string) => void
+}
+
+function SelectInput({
+    label,
+    setValue,
+    value,
+    values
+} : props) {
     const [show , setShow] = useState<boolean>(false)
-    const [num , setNum] = useState(0)
+
     return (
-        <>
+        <div
+        className='
+        flex
+        flex-col
+        gap-2
+        '>
             <div
             onClick={() => {
                 setShow(prev => !prev)
@@ -38,7 +55,7 @@ function SelectInput() {
                 overflow-hidden
                 text-ellipsis
                 '>
-                انتخاب دسته بندی
+                    {value ? value : label}
                 </p>
 
                 <BackArrow
@@ -55,26 +72,19 @@ function SelectInput() {
             className='
             flex
             flex-col
-            left-0
-            right-0
-            mx-3
             p-3
             rounded-[8px]
-            fixed
-            top-[50%]
-            -translate-y-[50%]
             shadow-lg
-            outline
-            outline-[1px]
-            outline-[#8E8E93]
+            border
+            border-[#8E8E93]
             z-[10]
             bg-white
             '>
-                {test_value.map((item, idx , list) => (
+                {values.map((item, idx , list) => (
                     <>
                         <div
                         onClick={() => {
-                            setNum(idx)
+                            setValue(item)
                             setShow(false)
                         }}
                         key={item}
@@ -96,7 +106,7 @@ function SelectInput() {
                             w-[15px]
                             aspect-square
                             rounded-full
-                            ${idx === num ? "bg-primary" : ""}
+                            ${item === value ? "bg-primary" : ""}
                             outline
                             outline-[1px]
                             outline-primary
@@ -113,19 +123,12 @@ function SelectInput() {
                         bg-neutral-200
                         my-3
                         '
-                        /> : <></>}
+                        /> : ""}
                     </>
                 ))}
             </div> : <></>}
-        </>
+        </div>
     )
 }
 
 export default SelectInput
-
-const test_value = [
-    "سلام",
-    "سلام",
-    "سلام",
-    "سلام",
-]

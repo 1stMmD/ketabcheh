@@ -71,7 +71,17 @@ function Information({
           required
           />
 
-          <SelectInput/>
+          <SelectInput
+          value={data.category}
+          label={"انتخاب دسته بندی"}
+          setValue={(v: string) => {
+            setData(prev => ({
+              ...prev,
+              category : v
+            }))
+          }}
+          values={["درسی","رمان","تاریخی","علمی"]}
+          />
 
           <TextInput
           value={data.publisher}

@@ -35,7 +35,7 @@ function Search() {
             flex
             flex-col
             '>
-                {categories.map(({Icon, title, url},idx , list) => (
+                {categories.map(({Icon, title},idx , list) => (
                     <>
                         <div
                         key={title + idx}
