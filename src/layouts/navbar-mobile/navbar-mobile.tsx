@@ -12,7 +12,8 @@ function NavbarMobile() {
         flex
         items-center
         justify-evenly
-        sticky
+        fixed
+        w-full
         bottom-0
         z-[10]
         bg-[#F5F5F5]
