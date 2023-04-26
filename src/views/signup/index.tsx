@@ -98,7 +98,7 @@ function Signup() {
                     setValue={(v : string) => {
                         setData(prev => ({
                             ...prev,
-                            data : v
+                            name : v
                         }))
                     }}
                     Icon={User}
