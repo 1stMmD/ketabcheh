@@ -1,20 +1,21 @@
-import { useState , useRef , useEffect } from "react"
+import { useState , useRef , useEffect, lazy , Suspense} from "react"
 import {
   BrowserRouter as Router,
   Routes,
   Route
 } from "react-router-dom"
-import Loading from "./views/loading"
-import Boarding from "./views/boarding"
-import Signup from "./views/signup"
-import Home from "./views/home"
 import NavbarMobile from "./layouts/navbar-mobile/navbar-mobile"
-import Library from "./views/library"
-import BookDetails from "./views/book-details"
-import Search from "./views/search"
-import Results from "./views/search/results"
-import OrderBook from "./views/order-book"
 import { useIsSmall } from "./hooks/useIsSmall"
+
+const Loading = lazy(() => import("./views/loading"))
+const Boarding = lazy(() => import("./views/boarding"))
+const Signup = lazy(() => import("./views/signup"))
+const Home = lazy(() => import("./views/home"))
+const Library = lazy(() => import("./views/library"))
+const BookDetails = lazy(() => import("./views/book-details"))
+const Search = lazy(() => import("./views/search"))
+const Results = lazy(() => import("./views/search/results"))
+const OrderBook = lazy(() => import("./views/order-book"))
 
 function App() {
   const { isSmall } = useIsSmall()
@@ -69,18 +70,32 @@ function App() {
       dir="rtl"
       className='
       '>
+        <Suspense
+        fallback={
+          <div
+          className="
+          flex
+          w-full
+          min-h-[calc(100vh_-_56px)]
+          items-center
+          justify-center
+          font-[IRANSans]
+          ">
 
-        <Routes>
-          <Route path="/" element={<Boarding/>}/>
-          <Route path="/sign-up" element={<Signup/>}/>
-          <Route path="/home" element={<Home/>}/>
-          <Route path="/search" element={<Search/>}/>
-          <Route path="/search/:text" element={<Results/>}/>
-          <Route path="/library" element={<Library/>}/>
-          <Route path="/order" element={<OrderBook/>}/>
-          <Route path="/book/:id" element={<BookDetails/>}/>
-          <Route path="/cart" element={<div className=" w-full flex min-h-[calc(100vh_-_56px)] "></div>}/>
-        </Routes>
+          </div>
+        }>
+          <Routes>
+            <Route path="/" element={<Boarding/>}/>
+            <Route path="/sign-up" element={<Signup/>}/>
+            <Route path="/home" element={<Home/>}/>
+            <Route path="/search" element={<Search/>}/>
+            <Route path="/search/:text" element={<Results/>}/>
+            <Route path="/library" element={<Library/>}/>
+            <Route path="/order" element={<OrderBook/>}/>
+            <Route path="/book/:id" element={<BookDetails/>}/>
+            <Route path="/cart" element={<div className=" w-full flex min-h-[calc(100vh_-_56px)] "></div>}/>
+          </Routes>
+        </Suspense>
 
         <NavbarMobile/>
         
