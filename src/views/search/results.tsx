@@ -78,17 +78,16 @@ function Results() {
                     کتابتو پیدا نکردی ؟ میتونیم برات تهیه کنیم !
                     </p>
 
-                    <button
+                    <Button
+                    size="sm"
+                    onClick={() => {
+                        navigate("/order")
+                    }}
                     className='
-                    p-3
-                    text-[10px]
-                    bg-primary
-                    text-white
-                    text-light
-                    rounded-[8px]
+                    !w-[unset]
                     '>
                     سفارش کتاب
-                    </button>
+                    </Button>
 
                 </div>
 

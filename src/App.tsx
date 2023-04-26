@@ -14,9 +14,12 @@ import BookDetails from "./views/book-details"
 import Search from "./views/search"
 import Results from "./views/search/results"
 import OrderBook from "./views/order-book"
+import { useIsSmall } from "./hooks/useIsSmall"
 
 function App() {
+  const { isSmall } = useIsSmall()
 
+  // show loading for 2 sec
   const [loading , setLoading] = useState(true)
   const timeout = useRef<null | number>(null)
 
@@ -32,6 +35,29 @@ function App() {
     }
   },[])
 
+  // if screen is not small don't render the app
+  if(!isSmall) return(
+    <div
+    className="
+    flex
+    w-full
+    min-h-screen
+    bg-primary
+    text-white
+    items-center
+    justify-center
+    ">
+        <p
+        className="
+        text-center
+        w-[min(300px,90%)]
+        ">
+          این سایت فقط در صفحات با عرض کم قابل مشاهده هست
+        </p>
+    </div>
+  )
+
+  // show loading
   if(loading) return (
     <Loading/>
   )
