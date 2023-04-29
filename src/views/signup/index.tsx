@@ -4,6 +4,7 @@ import Button from "../../components/common/button/button"
 import TextInput from "../../components/common/text-input/text-input"
 import { Email, Password, Phone, User } from "../../svg/icons"
 import { KetabchehLogo } from "../../svg/ketabcheh-logo"
+import { authAxios } from "../../api/axiosAuth"
 
 function Signup() {
     const navigate = useNavigate()
@@ -61,9 +62,19 @@ function Signup() {
             />
 
             <form
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
                 e.preventDefault()
-                navigate("/home")
+                const {email, password, phone, name } = data
+                // navigate("/home")
+                if(!email || !password || !phone || !name) return
+                try{
+                    await authAxios.post("/sign-up", data)
+                    navigate("/home")
+                }
+                catch(err){
+                    console.log(err)
+                    return
+                }
             }}
             className="
             w-full
