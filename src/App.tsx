@@ -6,8 +6,9 @@ import {
 } from "react-router-dom"
 import NavbarMobile from "./layouts/navbar-mobile/navbar-mobile"
 import { useIsSmall } from "./hooks/useIsSmall"
+import Loading from "./views/loading"
+import ReactQueryProvider from "./lib/react-query-provider"
 
-const Loading = lazy(() => import("./views/loading"))
 const Boarding = lazy(() => import("./views/boarding"))
 const Signup = lazy(() => import("./views/signup"))
 const Home = lazy(() => import("./views/home"))
@@ -65,42 +66,44 @@ function App() {
   )
 
   return (
-    <Router>
-      <main
-      dir="rtl"
-      className='
-      '>
-        <Suspense
-        fallback={
-          <div
-          className="
-          flex
-          w-full
-          min-h-[calc(100vh_-_56px)]
-          items-center
-          justify-center
-          font-[IRANSans]
-          ">
+    <ReactQueryProvider>
+      <Router>
+        <main
+        dir="rtl"
+        className='
+        '>
+          <Suspense
+          fallback={
+            <div
+            className="
+            flex
+            w-full
+            min-h-[calc(100vh_-_56px)]
+            items-center
+            justify-center
+            font-[IRANSans]
+            ">
 
-          </div>
-        }>
-          <Routes>
-            <Route path="/" element={<Boarding/>}/>
-            <Route path="/sign-up" element={<Signup/>}/>
-            <Route path="/home" element={<Home/>}/>
-            <Route path="/search" element={<Search/>}/>
-            <Route path="/search/:text" element={<Results/>}/>
-            <Route path="/library" element={<Library/>}/>
-            <Route path="/order" element={<OrderBook/>}/>
-            <Route path="/book/:id" element={<BookDetails/>}/>
-            <Route path="/cart" element={<div className=" w-full flex min-h-[calc(100vh_-_56px)] "></div>}/>
-          </Routes>
-        </Suspense>
+            </div>
+          }>
+            <Routes>
+              <Route path="/" element={<Boarding/>}/>
+              <Route path="/sign-up" element={<Signup/>}/>
+              <Route path="/home" element={<Home/>}/>
+              <Route path="/search" element={<Search/>}/>
+              <Route path="/search/:text" element={<Results/>}/>
+              <Route path="/library" element={<Library/>}/>
+              <Route path="/order" element={<OrderBook/>}/>
+              <Route path="/book/:id" element={<BookDetails/>}/>
+              <Route path="/cart" element={<div className=" w-full flex min-h-[calc(100vh_-_56px)] "></div>}/>
+            </Routes>
+          </Suspense>
 
-        <NavbarMobile/>
+          <NavbarMobile/>
 
-      </main>
-    </Router>
+        </main>
+      </Router>
+    </ReactQueryProvider>
   )
 }
 
