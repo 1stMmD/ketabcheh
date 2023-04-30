@@ -15,6 +15,61 @@ function Signup() {
         password : ""
     })
 
+    const [errors , setErrors] = useState({
+        name : "",
+        email : "",
+        phone : "",
+        password : "",
+        main : "قبلا ثبت نام کرده اید"
+    })
+
+    const fields = [
+        {
+            label : "نام و نام خانوادگی",
+            Icon : User,
+            value : data.name,
+            setValue : (v : string) => {
+                setData(prev => ({
+                    ...prev,
+                    name : v
+                }))
+            }
+        },
+        {
+            label : "ایمیل",
+            Icon : Email,
+            value : data.email,
+            setValue : (v : string) => {
+                setData(prev => ({
+                    ...prev,
+                    email : v
+                }))
+            }
+        },
+        {
+            label : "شماره تلفن",
+            Icon : Phone,
+            value : data.phone,
+            setValue : (v : string) => {
+                setData(prev => ({
+                    ...prev,
+                    phone : v
+                }))
+            }
+        },
+        {
+            label : "رمز عبور",
+            Icon : Password,
+            value : data.password,
+            setValue : (v : string) => {
+                setData(prev => ({
+                    ...prev,
+                    password : v
+                }))
+            }
+        },
+    ]
+
     return (
         <div
         className="
@@ -103,61 +158,38 @@ function Signup() {
                 flex-col
                 gap-3
                 ">
-                
-                    <TextInput
-                    value={data.name}
-                    setValue={(v : string) => {
-                        setData(prev => ({
-                            ...prev,
-                            name : v
-                        }))
-                    }}
-                    Icon={User}
-                    label="نام و نام خانوادگی"
-                    />
 
-                    <TextInput
-                    value={data.email}
-                    setValue={(v : string) => {
-                        setData(prev => ({
-                            ...prev,
-                            email : v
-                        }))
-                    }}
-                    Icon={Email}
-                    label="ایمیل"
-                    />
-                    <TextInput
-                    value={data.phone}
-                    setValue={(v : string) => {
-                        setData(prev => ({
-                            ...prev,
-                            phone : v
-                        }))
-                    }}
-                    Icon={Phone}
-                    label="شماره تلفن"
-                    />
-
-                    <TextInput
-                    value={data.password}
-                    setValue={(v : string) => {
-                        setData(prev => ({
-                            ...prev,
-                            password : v
-                        }))
-                    }}
-                    Icon={Password}
-                    label="رمز عبور"
-                    />
+                    {fields.map(({label,Icon,setValue,value} , idx) => (
+                        <TextInput
+                        required
+                        label={label}
+                        Icon={Icon}
+                        setValue={setValue}
+                        value={value}
+                        key={idx}
+                        />
+                    ))}
 
                     <div
                     className="
                     pt-2
+                    flex
+                    flex-col
+                    gap-1
                     ">
                         <Button>
                         ثبت نام
                         </Button>
+
+                        { errors.main ? 
+                        <p
+                        className="
+                        text-fail
+                        text-[14px]
+                        ">
+                            {errors.main}
+                        </p> 
+                        : <></>}
                     </div>
                 </div>
             </form>
