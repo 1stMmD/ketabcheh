@@ -9,6 +9,7 @@ import { useIsSmall } from "./hooks/useIsSmall"
 import ReactQueryProvider from "./lib/react-query-provider"
 import PersistentLogin from "./hoc/persistent-login"
 import AuthProtected from "./hoc/auth-protected"
+import RedirectAuth from "./hoc/redirect-auth"
 
 const Boarding = lazy(() => import("./views/boarding"))
 const Signup = lazy(() => import("./views/signup"))
@@ -68,7 +69,7 @@ function App() {
               </div>
             }>
               <Routes>
-                <Route path="/" element={<Boarding/>}/>
+                <Route path="/" element={<RedirectAuth><Boarding/></RedirectAuth>}/>
                 <Route path="/sign-up" element={<Signup/>}/>
                 <Route path="/home" element={<AuthProtected><Home/></AuthProtected>}/>
                 <Route path="/search" element={<AuthProtected><Search/></AuthProtected>}/>

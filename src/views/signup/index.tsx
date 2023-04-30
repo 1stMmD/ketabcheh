@@ -15,6 +15,65 @@ function Signup() {
         password : ""
     })
 
+    const [errors , setErrors] = useState({
+        name : "",
+        email : "",
+        phone : "",
+        password : "",
+        main : ""
+    })
+
+    const fields = [
+        {
+            label : "نام و نام خانوادگی",
+            Icon : User,
+            value : data.name,
+            setValue : (v : string) => {
+                setData(prev => ({
+                    ...prev,
+                    name : v
+                }))
+            },
+            error : errors.name
+        },
+        {
+            label : "ایمیل",
+            Icon : Email,
+            value : data.email,
+            setValue : (v : string) => {
+                setData(prev => ({
+                    ...prev,
+                    email : v
+                }))
+            },
+            error : errors.email
+        },
+        {
+            label : "شماره تلفن",
+            Icon : Phone,
+            value : data.phone,
+            setValue : (v : string) => {
+                setData(prev => ({
+                    ...prev,
+                    phone : v
+                }))
+            },
+            error : errors.phone
+        },
+        {
+            label : "رمز عبور",
+            Icon : Password,
+            value : data.password,
+            setValue : (v : string) => {
+                setData(prev => ({
+                    ...prev,
+                    password : v
+                }))
+            },
+            error : errors.password
+        },
+    ]
+
     return (
         <div
         className="
@@ -64,9 +123,57 @@ function Signup() {
             <form
             onSubmit={async (e) => {
                 e.preventDefault()
+                let fail = false
+
+                setErrors({
+                    name : "",
+                    email : "",
+                    main : "",
+                    password : "",
+                    phone : ""
+                })
+
                 const {email, password, phone, name } = data
-                // navigate("/home")
-                if(!email || !password || !phone || !name) return
+
+                if(name.length > 30){
+                    if(!fail) fail = true
+
+                    setErrors(prev => ({
+                        ...prev,
+                        name : "طولانی"
+                    }))
+                }
+
+                if(!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)){
+                    if(!fail) fail = true
+
+                    setErrors(prev => ({
+                        ...prev,
+                        email : "ایمیل درست نیست"
+                    }))
+                }
+
+                if(!/^(\+98|0)?9\d{9}$/.test(phone)){
+                    if(!fail) fail = true
+
+                    setErrors(prev => ({
+                        ...prev,
+                        phone : "شماره موبایل درست نیست"
+                    }))
+                }
+
+                if(password.length < 8) {
+                    if(!fail) fail = true
+
+                    setErrors(prev => ({
+                        ...prev,
+                        password : "رمز وارد شده باید بیشتر از 8 کاراکتر باشد"
+                    }))
+                }
+
+                if(fail) return
+
+                
                 try{
                     await authAxios.post("/sign-up", data)
                     navigate("/home")
@@ -103,61 +210,39 @@ function Signup() {
                 flex-col
                 gap-3
                 ">
-                
-                    <TextInput
-                    value={data.name}
-                    setValue={(v : string) => {
-                        setData(prev => ({
-                            ...prev,
-                            name : v
-                        }))
-                    }}
-                    Icon={User}
-                    label="نام و نام خانوادگی"
-                    />
 
-                    <TextInput
-                    value={data.email}
-                    setValue={(v : string) => {
-                        setData(prev => ({
-                            ...prev,
-                            email : v
-                        }))
-                    }}
-                    Icon={Email}
-                    label="ایمیل"
-                    />
-                    <TextInput
-                    value={data.phone}
-                    setValue={(v : string) => {
-                        setData(prev => ({
-                            ...prev,
-                            phone : v
-                        }))
-                    }}
-                    Icon={Phone}
-                    label="شماره تلفن"
-                    />
-
-                    <TextInput
-                    value={data.password}
-                    setValue={(v : string) => {
-                        setData(prev => ({
-                            ...prev,
-                            password : v
-                        }))
-                    }}
-                    Icon={Password}
-                    label="رمز عبور"
-                    />
+                    {fields.map(({label,Icon,setValue,value,error} , idx) => (
+                        <TextInput
+                        error={error}
+                        required
+                        label={label}
+                        Icon={Icon}
+                        setValue={setValue}
+                        value={value}
+                        key={idx}
+                        />
+                    ))}
 
                     <div
                     className="
                     pt-2
+                    flex
+                    flex-col
+                    gap-1
                     ">
                         <Button>
                         ثبت نام
                         </Button>
+
+                        { errors.main ? 
+                        <p
+                        className="
+                        text-fail
+                        text-[14px]
+                        ">
+                            {errors.main}
+                        </p> 
+                        : <></>}
                     </div>
                 </div>
             </form>
