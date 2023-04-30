@@ -20,7 +20,7 @@ function Signup() {
         email : "",
         phone : "",
         password : "",
-        main : "قبلا ثبت نام کرده اید"
+        main : ""
     })
 
     const fields = [
@@ -33,7 +33,8 @@ function Signup() {
                     ...prev,
                     name : v
                 }))
-            }
+            },
+            error : errors.name
         },
         {
             label : "ایمیل",
@@ -44,7 +45,8 @@ function Signup() {
                     ...prev,
                     email : v
                 }))
-            }
+            },
+            error : errors.email
         },
         {
             label : "شماره تلفن",
@@ -55,7 +57,8 @@ function Signup() {
                     ...prev,
                     phone : v
                 }))
-            }
+            },
+            error : errors.phone
         },
         {
             label : "رمز عبور",
@@ -66,7 +69,8 @@ function Signup() {
                     ...prev,
                     password : v
                 }))
-            }
+            },
+            error : errors.password
         },
     ]
 
@@ -119,9 +123,57 @@ function Signup() {
             <form
             onSubmit={async (e) => {
                 e.preventDefault()
+                let fail = false
+
+                setErrors({
+                    name : "",
+                    email : "",
+                    main : "",
+                    password : "",
+                    phone : ""
+                })
+
                 const {email, password, phone, name } = data
-                // navigate("/home")
-                if(!email || !password || !phone || !name) return
+
+                if(name.length > 30){
+                    if(!fail) fail = true
+
+                    setErrors(prev => ({
+                        ...prev,
+                        name : "طولانی"
+                    }))
+                }
+
+                if(!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)){
+                    if(!fail) fail = true
+
+                    setErrors(prev => ({
+                        ...prev,
+                        email : "ایمیل درست نیست"
+                    }))
+                }
+
+                if(!/^(\+98|0)?9\d{9}$/.test(phone)){
+                    if(!fail) fail = true
+
+                    setErrors(prev => ({
+                        ...prev,
+                        phone : "شماره موبایل درست نیست"
+                    }))
+                }
+
+                if(password.length < 8) {
+                    if(!fail) fail = true
+
+                    setErrors(prev => ({
+                        ...prev,
+                        password : "رمز وارد شده باید بیشتر از 8 کاراکتر باشد"
+                    }))
+                }
+
+                if(fail) return
+
+                
                 try{
                     await authAxios.post("/sign-up", data)
                     navigate("/home")
@@ -159,8 +211,9 @@ function Signup() {
                 gap-3
                 ">
 
-                    {fields.map(({label,Icon,setValue,value} , idx) => (
+                    {fields.map(({label,Icon,setValue,value,error} , idx) => (
                         <TextInput
+                        error={error}
                         required
                         label={label}
                         Icon={Icon}
