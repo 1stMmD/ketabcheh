@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRefreshToken } from "../hooks/use-refresh-token";
 import { useAccessToken } from "../store";
+import Loading from "../views/loading";
 
 type props = {
   children : React.ReactNode
@@ -34,7 +35,7 @@ function PersistentLogin({
   return (
     <>
     { loading ? 
-      <p>Loading</p> : 
+      <Loading/> : 
       children
     }
     </>
