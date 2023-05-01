@@ -2,63 +2,35 @@ import { useState } from "react"
 import { useNavigate } from "react-router"
 import Button from "../../components/common/button/button"
 import TextInput from "../../components/common/text-input/text-input"
-import { Email, Password, Phone, User } from "../../svg/icons"
+import {Password, User } from "../../svg/icons"
 import { KetabchehLogo } from "../../svg/ketabcheh-logo"
 import { authAxios } from "../../api/axiosAuth"
 
 function Signup() {
     const navigate = useNavigate()
     const [data, setData] = useState({
-        name : "",
-        email : "",
-        phone : "",
+        user : "",
         password : ""
     })
 
     const [errors , setErrors] = useState({
-        name : "",
-        email : "",
-        phone : "",
+        user : "",
         password : "",
         main : ""
     })
 
     const fields = [
         {
-            label : "نام و نام خانوادگی",
+            label : "شماره موبایل یا ایمیل",
             Icon : User,
-            value : data.name,
+            value : data.user,
             setValue : (v : string) => {
                 setData(prev => ({
                     ...prev,
-                    name : v
+                    user : v
                 }))
             },
-            error : errors.name
-        },
-        {
-            label : "ایمیل",
-            Icon : Email,
-            value : data.email,
-            setValue : (v : string) => {
-                setData(prev => ({
-                    ...prev,
-                    email : v
-                }))
-            },
-            error : errors.email
-        },
-        {
-            label : "شماره تلفن",
-            Icon : Phone,
-            value : data.phone,
-            setValue : (v : string) => {
-                setData(prev => ({
-                    ...prev,
-                    phone : v
-                }))
-            },
-            error : errors.phone
+            error : errors.user
         },
         {
             label : "رمز عبور",
@@ -123,59 +95,34 @@ function Signup() {
             <form
             onSubmit={async (e) => {
                 e.preventDefault()
-                let fail = false
+                let used = ""
 
                 setErrors({
-                    name : "",
-                    email : "",
+                    user : "",
                     main : "",
                     password : "",
-                    phone : ""
                 })
 
-                const {email, password, phone, name } = data
+                const {password, user } = data
 
-                if(name.length > 30){
-                    if(!fail) fail = true
+                if(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(user)) used = "email"
 
-                    setErrors(prev => ({
-                        ...prev,
-                        name : "طولانی"
-                    }))
-                }
-
-                if(!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)){
-                    if(!fail) fail = true
-
-                    setErrors(prev => ({
-                        ...prev,
-                        email : "ایمیل درست نیست"
-                    }))
-                }
-
-                if(!/^(\+98|0)?9\d{9}$/.test(phone)){
-                    if(!fail) fail = true
-
-                    setErrors(prev => ({
-                        ...prev,
-                        phone : "شماره موبایل درست نیست"
-                    }))
-                }
+                if(/^(\+98|0)?9\d{9}$/.test(user)) used = "phone"
 
                 if(password.length < 8) {
-                    if(!fail) fail = true
-
                     setErrors(prev => ({
                         ...prev,
                         password : "رمز وارد شده باید بیشتر از 8 کاراکتر باشد"
                     }))
+
+                    return
                 }
-
-                if(fail) return
-
                 
                 try{
-                    await authAxios.post("/auth/sign-up", data)
+                    await authAxios.post("/auth/login", {
+                        password,
+                        [used] : user
+                    })
                     navigate("/home")
                 }
                 catch(err){
@@ -201,7 +148,7 @@ function Signup() {
                 my-4
                 font-medium
                 ">
-                ثبت نام در کتابچه
+                ورود به کتابچه
                 </h1>
 
                 <div

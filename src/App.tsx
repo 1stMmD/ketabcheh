@@ -13,6 +13,7 @@ import RedirectAuth from "./hoc/redirect-auth"
 
 const Boarding = lazy(() => import("./views/boarding"))
 const Signup = lazy(() => import("./views/signup"))
+const Login = lazy(() => import("./views/login"))
 const Home = lazy(() => import("./views/home"))
 const Library = lazy(() => import("./views/library"))
 const BookDetails = lazy(() => import("./views/book-details"))
@@ -71,6 +72,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<RedirectAuth><Boarding/></RedirectAuth>}/>
                 <Route path="/sign-up" element={<Signup/>}/>
+                <Route path="/login" element={<Login/>}/>
                 <Route path="/home" element={<AuthProtected><Home/></AuthProtected>}/>
                 <Route path="/search" element={<AuthProtected><Search/></AuthProtected>}/>
                 <Route path="/search/:text" element={<AuthProtected><Results/></AuthProtected>}/>

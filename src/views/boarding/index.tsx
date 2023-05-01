@@ -71,9 +71,12 @@ function Boarding() {
                     </Button>
                 </Link>
 
-                <Button>
-                    ورود
-                </Button>
+                <Link
+                to="/login">
+                    <Button>
+                        ورود
+                    </Button>
+                </Link>
 
             </div>
 

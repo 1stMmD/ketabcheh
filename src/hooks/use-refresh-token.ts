@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { useAccessToken } from "../store"
 import { authAxios } from "../api/axiosAuth"
 
@@ -7,7 +6,7 @@ export const useRefreshToken = () => {
 
     const refresh = async () => {
         try{
-            const { data } = await authAxios.get("/refresh")
+            const { data } = await authAxios.get("/auth/refresh")
             setAccessToken(data.token)
             return data.token
         }
